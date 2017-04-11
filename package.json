@@ -1,0 +1,24 @@
+{
+  "name": "moveordieio",
+  "version": "1.0.0",
+  "description": "HTML5 Clone of Move Or Die with Javascript, built on Phaser game engine",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm run test",
+    "start": "http-server public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/varughese/moveordieio.git"
+  },
+  "author": "Mathew Varughese",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/varughese/moveordieio/issues"
+  },
+  "homepage": "https://github.com/varughese/moveordieio#readme",
+  "dependencies": {
+    "phaser": "^2.6.2",
+    "socket.io": "^1.7.3"
+  }
+}
