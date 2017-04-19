@@ -1,0 +1,6 @@
+{
+	"name":"CHARACTER MOD NAME",
+	"author":"AUTHOR NAME",
+	"description":"DESCRIPTION GOES HERE",
+	"category":"Character"
+}

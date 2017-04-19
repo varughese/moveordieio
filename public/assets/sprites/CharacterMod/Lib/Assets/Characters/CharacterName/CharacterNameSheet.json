@@ -1,0 +1,327 @@
+{"frames": [
+
+{
+	"filename": "Pupil.png",
+	"frame": {"x":2,"y":2,"w":30,"h":30},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":30},
+	"sourceSize": {"w":30,"h":30},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "LegSmall.png",
+	"frame": {"x":116,"y":2,"w":80,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":80},
+	"sourceSize": {"w":80,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "LegBig.png",
+	"frame": {"x":34,"y":2,"w":80,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":80,"h":80},
+	"sourceSize": {"w":80,"h":80},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "EyesN2.png",
+	"frame": {"x":154,"y":410,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "EyesHappy.png",
+	"frame": {"x":2,"y":410,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "EyesDead.png",
+	"frame": {"x":458,"y":308,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "MouthPleased.png",
+	"frame": {"x":306,"y":410,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "EyesJoy.png",
+	"frame": {"x":306,"y":308,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "EyesCry.png",
+	"frame": {"x":610,"y":308,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "MouthSleep.png",
+	"frame": {"x":458,"y":410,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "EyesN6.png",
+	"frame": {"x":458,"y":512,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "MouthShocked.png",
+	"frame": {"x":154,"y":308,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "EyesN4.png",
+	"frame": {"x":306,"y":512,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "EyesSquint.png",
+	"frame": {"x":2,"y":512,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "EyesN3.png",
+	"frame": {"x":610,"y":410,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "EyesN5.png",
+	"frame": {"x":154,"y":512,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "EyesN1.png",
+	"frame": {"x":2,"y":308,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "MouthDead.png",
+	"frame": {"x":154,"y":104,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "MouthKitty.png",
+	"frame": {"x":306,"y":104,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "MouthBreath.png",
+	"frame": {"x":654,"y":2,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "EyesBig.png",
+	"frame": {"x":350,"y":2,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "MouthHappy.png",
+	"frame": {"x":198,"y":2,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "MouthEvil.png",
+	"frame": {"x":502,"y":2,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "MouthBored.png",
+	"frame": {"x":2,"y":104,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "MouthSad.png",
+	"frame": {"x":610,"y":206,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "MouthN6.png",
+	"frame": {"x":458,"y":104,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "MouthN2.png",
+	"frame": {"x":306,"y":206,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "MouthN4.png",
+	"frame": {"x":458,"y":206,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "MouthN5.png",
+	"frame": {"x":2,"y":206,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "MouthN1.png",
+	"frame": {"x":610,"y":104,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "MouthN3.png",
+	"frame": {"x":154,"y":206,"w":150,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":100},
+	"sourceSize": {"w":150,"h":100},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "LifeBarCircle.png",
+	"frame": {"x":2,"y":643,"w":129,"h":129},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":129,"h":129},
+	"sourceSize": {"w":129,"h":129},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "LifeBarFace.png",
+	"frame": {"x":610,"y":512,"w":129,"h":129},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":129,"h":129},
+	"sourceSize": {"w":129,"h":129},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "BodyFat.png",
+	"frame": {"x":133,"y":643,"w":300,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":300},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "Body.png",
+	"frame": {"x":435,"y":643,"w":300,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":300},
+	"sourceSize": {"w":300,"h":300},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "CharacterNameSheet.png",
+	"format": "RGBA8888",
+	"size": {"w":806,"h":945},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:32a375aa421c7f995fbabf56adca25e4:2077fec6d046b48235201bdacbff471b:25ccf1031886ffa6f4ec211d40f03704$"
+}
+}
