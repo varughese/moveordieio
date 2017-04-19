@@ -16,6 +16,9 @@
 
     function create() {
         //  We're going to be using physics, so enable the Arcade Physics system
+
+
+        game.load.tilemap('mod', 'assets/sprites/tiles.csv', null, Phaser.Tilemap.CSV);
         game.physics.startSystem(Phaser.Physics.ARCADE);
         //  A simple background for our game
         game.add.sprite(0, 0, 'sky');
@@ -99,7 +102,7 @@
             player.body.velocity.y = -350;
         }
     }
-    
+
     function collectStar (player, star) {
 
         // Removes the star from the screen
