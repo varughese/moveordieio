@@ -20,5 +20,10 @@
   "dependencies": {
     "phaser": "^2.6.2",
     "socket.io": "^1.7.3"
+  },
+  "jshintConfig": {
+    "browser": true, // Standard browser globals e.g. `window`, `document`.
+    "node": false,
+    "es5": true
   }
 }
