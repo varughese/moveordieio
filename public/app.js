@@ -1,5 +1,3 @@
-(function (Phaser) {
-
 var game = new Phaser.Game(27*62,15*62, Phaser.AUTO, '', {
 	preload: preload,
 	create: create,
@@ -27,24 +25,41 @@ var map, layer;
 function create() {
 	//  We're going to be using physics, so enable the Arcade Physics system
 
+
+	game.physics.startSystem(Phaser.Physics.ARCADE);
+	game.stage.backgroundColor = "#676a70";
 	map = game.add.tilemap('map_basic');
 	map.addTilesetImage("map_basic", "tiles");
 	layer = map.createLayer("ground");
 	layer.resizeWorld();
 	layer.scale.set(0.5);
-	game.physics.startSystem(Phaser.Physics.ARCADE);
+layer.debug = true;
+	map.setCollisionBetween(0, 4);
+	
 	layer.resizeWorld();
 
 	game.scale.setGameSize(game.world.width, game.world.height);
-	starThings();
 
-console.log(game.world);
+	player = game.add.sprite(100, game.world.height - 150, 'dude');
+  
+game.physics.enable(player, Phaser.Physics.ARCADE);
+	//starThings();
+player.body.bounce.y = 0.08;
+	player.body.gravity.y = 300;
+	player.body.collideWorldBounds = true;
+	//  Our two animations, walking left and right.
+	player.animations.add('left', [0, 1, 2, 3], 10, true);
+	player.animations.add('right', [5, 6, 7, 8], 10, true);
+	  
+	cursors = game.input.keyboard.createCursorKeys();
 }
 
 function update() {
 	//  Collide the player and the stars with the platforms
 	//  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
 	//  Reset the players velocity (movement)
+	var x = game.physics.arcade.collide(layer, player);
+	console.log(x);
 	player.body.velocity.x = 0;
 	if (cursors.left.isDown) {
 		//  Move to the left
@@ -61,7 +76,7 @@ function update() {
 	}
 
 	//  Allow the player to jump if they are touching the ground.
-	if (cursors.up.isDown && player.body.touching.down) {
+	if (cursors.up.isDown) {
 		player.body.velocity.y = -350;
 	}
 }
@@ -72,36 +87,29 @@ function starThings() {
 	//  We will enable physics for any object that is created in this group
 	platforms.enableBody = true;
 	// Here we create the ground.
-	player = game.add.sprite(10, game.world.height - 150, 'dude');
 	//  We need to enable physics on the player
-	game.physics.arcade.enable(player);
+
 	//  Player physics properties. Give the little guy a slight bounce.
-	player.body.bounce.y = 0.08;
-	player.body.gravity.y = 310;
-	player.body.collideWorldBounds = true;
-	//  Our two animations, walking left and right.
-	player.animations.add('left', [0, 1, 2, 3], 10, true);
-	player.animations.add('right', [5, 6, 7, 8], 10, true);
+	
 	//  Finally some stars to collect
-	stars = game.add.group();
-	//  We will enable physics for any star that is created in this group
-	stars.enableBody = true;
-	//  Here we'll create 12 of them evenly spaced apart
-	for (var i = 0; i < 120; i++) {
-		//  Create a star inside of the 'stars' group
-		var star = stars.create(i * 70, 0, 'star');
-		//  Let gravity do its thing
-		star.body.gravity.y = 300;
-		//  This just gives each star a slightly random bounce value
-		star.body.bounce.y = 0.7 + Math.random() * 0.2;
-	}
-	//  The score
-	scoreText = game.add.text(16, 16, 'SCORE: 0', {
-		fontSize: '32px',
-		fill: 'yellow'
-	});
+	// stars = game.add.group();
+	// //  We will enable physics for any star that is created in this group
+	// stars.enableBody = true;
+	// //  Here we'll create 12 of them evenly spaced apart
+	// for (var i = 0; i < 120; i++) {
+	// 	//  Create a star inside of the 'stars' group
+	// 	var star = stars.create(i * 70, 0, 'star');
+	// 	//  Let gravity do its thing
+	// 	star.body.gravity.y = 300;
+	// 	//  This just gives each star a slightly random bounce value
+	// 	star.body.bounce.y = 0.7 + Math.random() * 0.2;
+	// }
+	// //  The score
+	// scoreText = game.add.text(16, 16, 'SCORE: 0', {
+	// 	fontSize: '32px',
+	// 	fill: 'yellow'
+	// });
 	//  Our controls.
-	cursors = game.input.keyboard.createCursorKeys();
 }
 
 function collectStar(player, star) {
@@ -112,5 +120,3 @@ function collectStar(player, star) {
 	score += 10;
 	scoreText.text = 'Score: ' + score;
 }
-
-})(Phaser);
