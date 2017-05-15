@@ -9,6 +9,8 @@ function preload() {
 	game.load.image('tiles', 'assets/sprites/tilelistspritesheet.png');
 	game.load.image('ground', 'assets/platform.png');
 	game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+	game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+	game.scale.pageAlignVertically = true;
 }
 
 var player;
@@ -26,7 +28,7 @@ function create() {
 	map = game.add.tilemap('map_basic');
 	map.addTilesetImage("map_basic", "tiles");
 	layer = map.createLayer(0);
-	map.setCollisionBetween(1,100);
+	map.setCollisionBetween(1,5);
 
 	//layer.scale.set(0.5);
 	layer.resizeWorld();
