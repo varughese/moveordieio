@@ -11,6 +11,7 @@ function preload() {
 	game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
 	game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 	game.scale.pageAlignVertically = true;
+	game.scale.pageAlignHorizontally = true;
 }
 
 var player;
@@ -27,23 +28,20 @@ function create() {
 
 	map = game.add.tilemap('map_basic');
 	map.addTilesetImage("map_basic", "tiles");
-	layer = map.createLayer(0);
+	layer = map.createLayer("ground");
 	map.setCollisionBetween(1,5);
 
-	//layer.scale.set(0.5);
 	layer.resizeWorld();
-	//layer.debug = true;
 
-	game.scale.setGameSize(game.world.width, game.world.height);
+//	game.scale.setGameSize(game.world.width, game.world.height);
 
 	player = game.add.sprite(500, 500, 'dude');
 
 	game.physics.enable(player);
-	//starThings();
 	player.body.bounce.y = 0.08;
 	player.body.gravity.y = 300;
 	player.body.collideWorldBounds = true;
-	//  Our two animations, walking left and right.
+	
 	player.animations.add('left', [0, 1, 2, 3], 10, true);
 	player.animations.add('right', [5, 6, 7, 8], 10, true);
 
@@ -54,16 +52,15 @@ function update() {
 	//  Collide the player and the stars with the platforms
 	//  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
 	//  Reset the players velocity (movement)
-	var x = game.physics.arcade.collide(player, layer);
-	console.log(x);
+	game.physics.arcade.collide(player, layer);
 	player.body.velocity.x = 0;
 	if (cursors.left.isDown) {
 		//  Move to the left
-		player.body.velocity.x = -300;
+		player.body.velocity.x = -500;
 		player.animations.play('left');
 	} else if (cursors.right.isDown) {
 		//  Move to the right
-		player.body.velocity.x = 300;
+		player.body.velocity.x = 500;
 		player.animations.play('right');
 	} else {
 		//  Stand still
