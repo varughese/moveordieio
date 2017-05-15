@@ -21,7 +21,7 @@ var cursors;
 var stars;
 var score = 0;
 var scoreText;
-var map, layer;
+var map, layer, jumpTimer = 0, jumpHoldTimer = 0;
 
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -41,9 +41,10 @@ function create() {
 
 	game.physics.enable(player);
 	player.body.bounce.y = 0.08;
-	player.body.gravity.y = 800;
+	player.body.gravity.y = 1000;
 	player.body.collideWorldBounds = true;
-
+	player.body.maxVelocity.x = 500;
+	player.body.maxVelocity.y = 900;
 	player.animations.add('left', [0, 1, 2, 3], 10, true);
 	player.animations.add('right', [5, 6, 7, 8], 10, true);
 
@@ -54,17 +55,13 @@ function update() {
 	game.physics.arcade.collide(player, layer);
 	player.body.acceleration.x = 0;
 	if (cursors.left.isDown) {
-		if(player.body.velocity.x > -500) {
 			player.body.acceleration.x = -1100;
 			// player.body.velocity.x -= 1;
 			player.animations.play('left');
-		}
 	} else if (cursors.right.isDown) {
-		if(player.body.velocity.x < 500) {
 			player.body.acceleration.x = 1100;
 			// player.body.velocity.x = 500;
 			player.animations.play('right');
-		}
 	} else {
 		//  Stand still
 		var movingLeft = player.body.velocity.x < 0;
@@ -84,8 +81,17 @@ function update() {
 	}
 
 	//  Allow the player to jump if they are touching the ground.
-	if (cursors.up.isDown && player.body.onFloor()) {
-		player.body.velocity.y = -500;
+	if (cursors.up.isDown) {
+		console.log(jumpHoldTimer);
+		if(player.body.onFloor()) {
+			player.body.velocity.y = -500;
+			jumpHoldTimer = 0;
+		} else {
+			jumpHoldTimer++;
+			if(jumpHoldTimer >= 9 && jumpHoldTimer <= 12) {
+				player.body.velocity.y -= 50;
+			}
+		}
 	}
 	if (cursors.down.isDown) {
 		player.body.velocity.y += 50;
