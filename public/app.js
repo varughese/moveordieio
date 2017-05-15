@@ -80,9 +80,17 @@ function update() {
 		player.frame = 4;
 	}
 
+	if(player.body.blocked.left && cursors.right.isDown){
+		player.body.velocity.y -= 300;
+		player.body.velocity.x += 450;
+	}
+	if(player.body.blocked.right && cursors.left.isDown){
+		player.body.velocity.y -= 300;
+		player.body.velocity.x -= 450;
+	}
+
 	//  Allow the player to jump if they are touching the ground.
 	if (cursors.up.isDown) {
-		console.log(jumpHoldTimer);
 		if(player.body.onFloor()) {
 			player.body.velocity.y = -500;
 			jumpHoldTimer = 0;
