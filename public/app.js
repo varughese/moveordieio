@@ -19,7 +19,7 @@ function preload() {
 
 var player;
 
-var players = [1,2,3,4];
+var players = [1];
 
 var platforms;
 var cursors;
@@ -110,5 +110,5 @@ function update() {
 }
 
 function render() {
-	game.debug.bodyInfo(players[1].sprite,140,100);
+	game.debug.bodyInfo(players[0].sprite,140,100);
 }

@@ -26,6 +26,14 @@ function Player(x, y, color, id) {
         player.animations.add('right', [5, 6, 7, 8], 10, true);
     };
 
+
+
+
+}
+
+Player.prototype.update = function(game, cursors) {
+    var player = this.sprite;
+
     function _controlUpdate(game, cursors) {
         player.body.acceleration.x = 0;
         if (cursors.left.isDown) {
@@ -83,8 +91,5 @@ function Player(x, y, color, id) {
         }
     }
 
-    this.update = function(game, cursors) {
-        _controlUpdate(game, cursors);
-    };
-
-}
+    _controlUpdate(game, cursors);
+};
