@@ -19,14 +19,14 @@ function preload() {
 
 var player;
 
-var players = [1];
+var players = [1,2];
 
 var platforms;
 var cursors;
 var stars;
 var score = 0;
 var scoreText;
-var map, layer, jumpTimer = 0, jumpHoldTimer = 0;
+var map, layer;
 var tileScoreData = {
 	total: 0,
 	score: 0
@@ -86,10 +86,10 @@ function create() {
 		if(tile.index == 1) tileScoreData.total++;	
 	});
 
-	 map.setTileIndexCallback(1, function(player, tile) {
-		 console.log(player.data.color);
-		if(tile.dirty !== player.data.color) {
+	 map.setTileIndexCallback([1,11,12,13,14], function(player, tile) {
+ 		if(tile.dirty !== player.data.color) {
 			map.putTile(colorHash[player.data.color].num,tile.x,tile.y);
+			socket.emit("tile jawn", {x: tile.x, y: tile.y, color: player.data.color});
 			tileScoreData.score++;
 			scoreText.text = "SCORE: " + tileScoreData.score;
 		}

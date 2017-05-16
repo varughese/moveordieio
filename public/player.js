@@ -26,13 +26,16 @@ function Player(x, y, color, id) {
         player.animations.add('right', [5, 6, 7, 8], 10, true);
     };
 
-
+    this.jumpTimer = 0;
+    this.jumpHoldTimer = 0;
 
 
 }
 
 Player.prototype.update = function(game, cursors) {
     var player = this.sprite;
+    var self = this;
+    
 
     function _controlUpdate(game, cursors) {
         player.body.acceleration.x = 0;
@@ -42,7 +45,6 @@ Player.prototype.update = function(game, cursors) {
                 player.animations.play('left');
         } else if (cursors.right.isDown) {
                 player.body.acceleration.x = 1100;
-                // player.body.velocity.x = 500;
                 player.animations.play('right');
         } else {
             //  Stand still
@@ -78,10 +80,10 @@ Player.prototype.update = function(game, cursors) {
         if (cursors.up.isDown) {
             if(player.body.onFloor()) {
                 player.body.velocity.y = -500;
-                jumpHoldTimer = 0;
+                self.jumpHoldTimer = 0;
             } else {
-                jumpHoldTimer++;
-                if(jumpHoldTimer >= 9 && jumpHoldTimer <= 12) {
+                self.jumpHoldTimer++;
+                if(self.jumpHoldTimer >= 9 && self.jumpHoldTimer <= 12) {
                     player.body.velocity.y -= 50;
                 }
             }
@@ -92,4 +94,5 @@ Player.prototype.update = function(game, cursors) {
     }
 
     _controlUpdate(game, cursors);
+
 };

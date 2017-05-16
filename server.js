@@ -11,6 +11,10 @@ io.on('connection', function(socket){
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
+
+  socket.on("tile jawn", function(tile) {
+    console.log("jawn", tile);
+  })
 });
     
 
