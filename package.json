@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "npm run test",
-    "start": "http-server public"
+    "start": "http-server public",
+    "livereload": "livereload public",
+    "dev": "start npm run start && start npm run livereload"
   },
   "repository": {
     "type": "git",
@@ -25,5 +27,9 @@
     "browser": true,
     "node": false,
     "es5": true
+  },
+  "devDependencies": {
+    "http-server": "^0.10.0",
+    "livereload": "^0.6.2"
   }
 }
