@@ -22,6 +22,10 @@ var stars;
 var score = 0;
 var scoreText;
 var map, layer, jumpTimer = 0, jumpHoldTimer = 0;
+var tileScoreData = {
+	total: 0,
+	score: 0
+};
 
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -48,7 +52,23 @@ function create() {
 	player.animations.add('left', [0, 1, 2, 3], 10, true);
 	player.animations.add('right', [5, 6, 7, 8], 10, true);
 
-	cursors = game.input.keyboard.createCursorKeys();
+	map.forEach(function(tile) {
+		if(tile.index == 1) tileScoreData.total++;	
+	});
+
+	 map.setTileIndexCallback(1, function(sprite, tile) {
+		if(!tile.dirty) {
+			tileScoreData.score++;
+			scoreText.text = "SCORE: " + tileScoreData.score;
+		}
+		tile.dirty = true;
+		tile.alpha = 0.6;
+		layer.dirty = true;
+		return true;
+	 }, this);
+
+	 scoreText = game.add.text(16, 16, 'SCORE: 0', { fontSize: '32px', fill: '#000' });
+	 cursors = game.input.keyboard.createCursorKeys();
 }
 
 function update() {
