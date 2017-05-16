@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "npm run test",
-    "start": "http-server public",
+    "start": "node server.js",
+    "simpstart": "http-server public",
     "livereload": "livereload public",
     "dev": "start nodemon server.js && start npm run livereload"
   },
