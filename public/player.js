@@ -9,8 +9,6 @@ function Player(x, y, color, id) {
         id: id
     };
 
-    this.sprite;
-
     var player;
 
     this.init = function(game) {
@@ -25,7 +23,7 @@ function Player(x, y, color, id) {
         player.body.maxVelocity.y = 900;
         player.animations.add('left', [0, 1, 2, 3], 10, true);
         player.animations.add('right', [5, 6, 7, 8], 10, true);
-    }
+    };
 
     function _controlUpdate(game, cursors) {
         player.body.acceleration.x = 0;
@@ -86,6 +84,6 @@ function Player(x, y, color, id) {
 
     this.update = function(game, cursors) {
         _controlUpdate(game, cursors);
-    }
+    };
 
 }

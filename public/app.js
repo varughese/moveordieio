@@ -18,6 +18,9 @@ function preload() {
 }
 
 var player;
+
+var players = [1,2,3,4];
+
 var platforms;
 var cursors;
 var stars;
@@ -29,10 +32,10 @@ var tileScoreData = {
 	score: 0
 };
 var colorHash = {
-	'blue': 11,
-	'yellow': 12,
-	'green': 13,
-	'pink': 14
+	'blue': 11, //#5dc9d6
+	'yellow': 12, // #cac34a
+	'green': 13, // #87d65b
+	'pink': 14 // #cd45ca
 };
 
 
@@ -47,10 +50,15 @@ function create() {
 
 	layer.resizeWorld();
 
-	//game.scale.setGameSize(game.world.width, game.world.height);
 
-	player = new Player(500,500, 'yellow', 3434);
-	player.init(game);
+
+	for(var i=0; i<players.length; i++) {
+		players[i] = new Player((i+1) * 100, 300, Object.keys(colorHash)[i], Math.random());
+		players[i].init(game);
+	}
+
+	//player = new Player(500,500, 'yellow', 3434);
+	//player.init(game);
 	//layer.debug = true;
 	// player.color = "green";
 	// game.physics.enable(player);
@@ -67,6 +75,7 @@ function create() {
 	});
 
 	 map.setTileIndexCallback(1, function(player, tile) {
+		 console.log(player.data.color);
 		if(tile.dirty !== player.data.color) {
 			map.putTile(colorHash[player.data.color],tile.x,tile.y);
 			tileScoreData.score++;
@@ -82,64 +91,12 @@ function create() {
 }
 
 function update() {
-	game.physics.arcade.collide(player.sprite, layer);
-	player.update(game, cursors);
-	// player.body.acceleration.x = 0;
-	// if (cursors.left.isDown) {
-	// 		player.body.acceleration.x = -1100;
-	// 		// player.body.velocity.x -= 1;
-	// 		player.animations.play('left');
-	// } else if (cursors.right.isDown) {
-	// 		player.body.acceleration.x = 1100;
-	// 		// player.body.velocity.x = 500;
-	// 		player.animations.play('right');
-	// } else {
-	// 	//  Stand still
-	// 	var movingLeft = player.body.velocity.x < 0;
-	// 	var still = Math.abs(player.body.velocity.x) < 50;
-	// 	if(!still) {
-	// 		if(movingLeft) {
-	// 			player.body.acceleration.x = 1800;
-	// 		} else {
-	// 			player.body.acceleration.x = -1800;
-	// 		}
-	// 	} else {
-	// 		player.body.velocity.x = 0;
-	// 		player.body.acceleration.x = 0;
-	// 	}
-	// 	player.animations.stop();
-	// 	player.frame = 4;
-	// }
-
-	// if(player.body.blocked.left) {
-	// 	if(cursors.right.isDown) {
-	// 		player.body.velocity.y -= 300;
-	// 		player.body.velocity.x += 450;
-	// 	}
-	// }
-
-	// if(player.body.blocked.right && cursors.left.isDown){
-	// 	player.body.velocity.y -= 300;
-	// 	player.body.velocity.x -= 450;
-	// }
-
-	// //  Allow the player to jump if they are touching the ground.
-	// if (cursors.up.isDown) {
-	// 	if(player.body.onFloor()) {
-	// 		player.body.velocity.y = -500;
-	// 		jumpHoldTimer = 0;
-	// 	} else {
-	// 		jumpHoldTimer++;
-	// 		if(jumpHoldTimer >= 9 && jumpHoldTimer <= 12) {
-	// 			player.body.velocity.y -= 50;
-	// 		}
-	// 	}
-	// }
-	// if (cursors.down.isDown) {
-	// 	player.body.velocity.y += 50;
-	// }
+	for(var i=0; i<players.length; i++) {
+		game.physics.arcade.collide(players[i].sprite, layer);
+		players[i].update(game, cursors);
+	}
 }
 
 function render() {
-	game.debug.bodyInfo(player.sprite,140,100);
+	game.debug.bodyInfo(players[1].sprite,140,100);
 }
