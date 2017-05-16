@@ -7,7 +7,7 @@
     "test": "npm run test",
     "start": "http-server public",
     "livereload": "livereload public",
-    "dev": "start npm run start && start npm run livereload"
+    "dev": "start nodemon server.js && start npm run livereload"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/varughese/moveordieio#readme",
   "dependencies": {
+    "express": "^4.15.2",
     "phaser": "^2.6.2",
     "socket.io": "^1.7.3"
   },
