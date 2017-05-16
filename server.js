@@ -8,10 +8,20 @@ app.use(express.static(__dirname + '/public'));
 var players = [];
 
 var colors = ['blue', 'yellow', 'green', 'pink'];
+var positions = [
+{ x: 260, y: 100 },
+{ x: 1320, y: 100 },
+{ x: 1100, y: 650 },
+{ x: 525, y: 650 }];
 
 io.on('connection', function(socket){
   console.log('USER CONNECTED', socket.id);
-  players[players.length] = { id: socket.id, color: colors[players.length] };
+  players[players.length] = { 
+      id: socket.id, 
+      color: colors[players.length], 
+      x: positions[players.length].x,
+      y: positions[players.length].y
+};
 
   console.log(players.length + " PLAYERS!");
   io.emit("new_player", players[players.length-1]);

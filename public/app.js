@@ -52,6 +52,7 @@ var colorHash = {
 
 socket.on("new_player", function(player) {
 	console.log("NEW PLAYERERERR", player);
+	players[player.length-1] = new Player(game.world.rndX)
 });
 
 function create() {
