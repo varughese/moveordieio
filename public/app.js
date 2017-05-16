@@ -5,6 +5,8 @@ var game = new Phaser.Game(27*62,15*62, Phaser.AUTO, '', {
 	render: render
 });
 
+var socket = io();
+
 function preload() {
 	game.load.tilemap('map_basic', 'assets/maps/map_01.json', null, Phaser.Tilemap.TILED_JSON);
 	game.load.image('tiles', 'assets/sprites/tilelistspritesheet.png');
