@@ -5,7 +5,7 @@ var game = new Phaser.Game(27*62,15*62, Phaser.AUTO, '', {
 	render: render
 });
 
-var socket = io();
+
 
 function preload() {
 	game.load.tilemap('map_basic', 'assets/maps/map_01.json', null, Phaser.Tilemap.TILED_JSON);
@@ -19,7 +19,7 @@ function preload() {
 
 var player;
 
-var players = [1,2];
+var players = {};
 
 var platforms;
 var cursors;
@@ -50,11 +50,6 @@ var colorHash = {
 	}
 };
 
-socket.on("new_player", function(player) {
-	console.log("NEW PLAYERERERR", player);
-	players[player.length-1] = new Player(game.world.rndX)
-});
-
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 	game.stage.backgroundColor = "#676a70";
@@ -66,12 +61,31 @@ function create() {
 
 	layer.resizeWorld();
 
+	var socket = io();
 
+	socket.on("new_player", function(inplayers) {
+		for(var p in inplayers) {
+			if(!players[p]) {
+				players[p] = new Player(inplayers[p].x, inplayers[p].y, inplayers[p].color, inplayers[p].id);
+				players[p].init(game);
+			}
+			if(socket.id == p) {
+				player = players[p];
+			}
+		}
+		console.log('New Player(s)!', inplayers);
+	});
 
-	for(var i=0; i<players.length; i++) {
-		players[i] = new Player((i+1) * 100, 300, Object.keys(colorHash)[i], Math.random());
-		players[i].init(game);
-	}
+	socket.on("lost_player", function(id) {
+		console.log("LOST PLAYER! Was color", players[id].color);
+		players[id].sprite.kill();
+		delete players[id];
+	});
+
+	// for(var i=0; i<players.length; i++) {
+	// 	players[i] = new Player((i+1) * 100, 300, Object.keys(colorHash)[i], Math.random());
+	// 	players[i].init(game);
+	// }
 
 	//player = new Player(500,500, 'yellow', 3434);
 	//player.init(game);
@@ -107,12 +121,12 @@ function create() {
 }
 
 function update() {
-	for(var i=0; i<players.length; i++) {
-		game.physics.arcade.collide(players[i].sprite, layer);
-		players[i].update(game, cursors);
+	for(var p in players) {
+		game.physics.arcade.collide(players[p].sprite, layer);
+		players[p].update(game, cursors);
 	}
 }
 
 function render() {
-	game.debug.bodyInfo(players[0].sprite,140,100);
+	if(player) game.debug.bodyInfo(player.sprite,140,100);
 }
