@@ -100,10 +100,13 @@ function update() {
 		player.frame = 4;
 	}
 
-	if(player.body.blocked.left && cursors.right.isDown){
-		player.body.velocity.y -= 300;
-		player.body.velocity.x += 450;
+	if(player.body.blocked.left) {
+		if(cursors.right.isDown) {
+			player.body.velocity.y -= 300;
+			player.body.velocity.x += 450;
+		}
 	}
+
 	if(player.body.blocked.right && cursors.left.isDown){
 		player.body.velocity.y -= 300;
 		player.body.velocity.x -= 450;
