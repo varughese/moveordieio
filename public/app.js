@@ -50,6 +50,9 @@ var colorHash = {
 	}
 };
 
+socket.on("new_player", function(player) {
+	console.log("NEW PLAYERERERR", player);
+});
 
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
