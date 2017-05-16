@@ -26,6 +26,13 @@ var tileScoreData = {
 	total: 0,
 	score: 0
 };
+var colorHash = {
+	'blue': 11,
+	'yellow': 12,
+	'green': 13,
+	'pink': 14
+};
+
 
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -34,7 +41,7 @@ function create() {
 	map = game.add.tilemap('map_basic');
 	map.addTilesetImage("map_basic", "tiles");
 	layer = map.createLayer("ground");
-	map.setCollisionBetween(1,5);
+	map.setCollisionBetween(1,25);
 
 	layer.resizeWorld();
 
@@ -42,7 +49,7 @@ function create() {
 
 	player = game.add.sprite(500, 500, 'dude');
 	//layer.debug = true;
-
+	player.color = "green";
 	game.physics.enable(player);
 	player.body.bounce.y = 0.08;
 	player.body.gravity.y = 1000;
@@ -56,13 +63,13 @@ function create() {
 		if(tile.index == 1) tileScoreData.total++;	
 	});
 
-	 map.setTileIndexCallback(1, function(sprite, tile) {
-		if(!tile.dirty) {
+	 map.setTileIndexCallback(1, function(player, tile) {
+		if(tile.dirty !== player.color) {
+			map.putTile(colorHash[player.color],tile.x,tile.y);
 			tileScoreData.score++;
 			scoreText.text = "SCORE: " + tileScoreData.score;
 		}
-		tile.dirty = true;
-		tile.alpha = 0.6;
+		tile.dirty = player.color;
 		layer.dirty = true;
 		return true;
 	 }, this);
@@ -88,9 +95,9 @@ function update() {
 		var still = Math.abs(player.body.velocity.x) < 50;
 		if(!still) {
 			if(movingLeft) {
-				player.body.acceleration.x = 1100;
+				player.body.acceleration.x = 1800;
 			} else {
-				player.body.acceleration.x = -1100;
+				player.body.acceleration.x = -1800;
 			}
 		} else {
 			player.body.velocity.x = 0;
