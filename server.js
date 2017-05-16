@@ -14,7 +14,7 @@ io.on('connection', function(socket){
 
   socket.on("tile jawn", function(tile) {
     console.log("jawn", tile);
-  })
+  });
 });
     
 
