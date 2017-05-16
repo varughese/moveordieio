@@ -32,10 +32,22 @@ var tileScoreData = {
 	score: 0
 };
 var colorHash = {
-	'blue': 11, //#5dc9d6
-	'yellow': 12, // #cac34a
-	'green': 13, // #87d65b
-	'pink': 14 // #cd45ca
+	'blue': {
+		num: 11,
+		tint: 0x5dc9d6
+	},
+	'yellow': {
+		num: 12,
+		tint: 0xcac34a
+	},
+	'green': {
+		num: 13,
+		tint: 0x87d65b
+	},
+	'pink': {
+		num: 14,
+		tint: 0xcd45ca
+	}
 };
 
 
@@ -77,7 +89,7 @@ function create() {
 	 map.setTileIndexCallback(1, function(player, tile) {
 		 console.log(player.data.color);
 		if(tile.dirty !== player.data.color) {
-			map.putTile(colorHash[player.data.color],tile.x,tile.y);
+			map.putTile(colorHash[player.data.color].num,tile.x,tile.y);
 			tileScoreData.score++;
 			scoreText.text = "SCORE: " + tileScoreData.score;
 		}

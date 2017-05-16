@@ -17,6 +17,7 @@ function Player(x, y, color, id) {
         player.data = self.data;
         game.physics.enable(player);
         player.body.bounce.y = 0.08;
+        player.tint = colorHash[self.data.color].tint;
         player.body.gravity.y = 1000;
         player.body.collideWorldBounds = true;
         player.body.maxVelocity.x = 500;
