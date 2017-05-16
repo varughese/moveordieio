@@ -18,7 +18,7 @@ function preload() {
 }
 
 var player;
-
+var socket;
 var players = {};
 
 var platforms;
@@ -61,7 +61,7 @@ function create() {
 
 	layer.resizeWorld();
 
-	var socket = io();
+	socket = io();
 
 	socket.on("new_player", function(inplayers) {
 		for(var p in inplayers) {
@@ -80,6 +80,13 @@ function create() {
 		console.log("LOST PLAYER! Was color", players[id].color);
 		players[id].sprite.kill();
 		delete players[id];
+	});
+
+	socket.on("update_moves", function(data) {
+		console.log("CLIENT UPDAT MOVES");
+		var enemy = players[data.id];
+		enemy.cursor = data.state;
+		enemy.update();
 	});
 
 	// for(var i=0; i<players.length; i++) {
@@ -121,9 +128,16 @@ function create() {
 }
 
 function update() {
+	if(!player) return;
+	player.input.left = cursors.left.isDown;
+	player.input.right = cursors.right.isDown;
+	player.input.down = cursors.down.isDown;
+	player.input.jump = cursors.up.isDown;
+	player.input.stop = !player.input.left && !player.input.right && !player.input.jump && !player.input.down;
+	
 	for(var p in players) {
 		game.physics.arcade.collide(players[p].sprite, layer);
-		players[p].update(game, cursors);
+		players[p].update(game);
 	}
 }
 

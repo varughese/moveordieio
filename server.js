@@ -46,12 +46,17 @@ io.on('connection', function (socket) {
         io.emit("lost_player", socket.id);
     });
 
+    socket.on("update_moves", function(state) {
+        console.log("update the moves", state);
+        io.emit('update_moves', {id: socket.id, state: state});
+    });
+
     socket.on("tile jawn", function (tile) {
         console.log("jawn", tile);
     });
 });
 
 
-server.listen(process.env.PORT || 8080, function () { // Listens to port 8081
+server.listen(process.env.PORT || 8080, function () { // Listens to port 8080
     console.log('Listening on ' + server.address().port);
 });
