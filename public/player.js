@@ -67,6 +67,7 @@ Player.prototype.update = function(game) {
         if(this.data.id === socket.id) {
             this.input.x = this.sprite.x;
             this.input.y = this.sprite.y;
+            this.cursor = this.input;
             socket.emit('update_moves', this.input);
         }
     }

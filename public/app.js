@@ -51,7 +51,7 @@ var colorHash = {
 		tint: 0xcd45ca
 	}
 };
-
+var jawn;
 function create() {
 	game.physics.startSystem(Phaser.Physics.ARCADE);
 	game.stage.backgroundColor = "#676a70";
@@ -76,8 +76,9 @@ function create() {
 			}
 		}
 		console.log('New Player(s)!', inplayers);
+	//jawn = new Player(player.sprite.x, player.sprite.y, 'yellow', 'jawn');
+	// jawn.init(game);
 	});
-
 	socket.on("lost_player", function(id) {
 		console.log("LOST PLAYER! Was color", players[id].color);
 		players[id].sprite.kill();
@@ -88,10 +89,18 @@ function create() {
 		var enemy = players[data.id];
 		enemy.cursor = data.state;
 		if(data.state.x !== enemy.sprite.x || data.state.y !== enemy.sprite.y) {
-			enemy.sprite.x = data.state.x;
-			enemy.sprite.y = data.state.y;
+			if(enemy.sprite.x - data.state.x > 3 || enemy.sprite.y - data.state.y > 4) {
+				console.warn('MISMATCH');
+				console.log('SERVER X:', data.state.x)
+				console.log('CLIENT X:', enemy.sprite.x);
+				console.log('SERVER Y:', data.state.y)
+				console.log('CLIENT Y:', enemy.sprite.y);
+			}
+			// enemy.sprite.x = data.state.x;
+			// enemy.sprite.y = data.state.y;
+
 		}
-		enemy.update();
+		// jawn.cursor = data.state;
 	});
 
 	// for(var i=0; i<players.length; i++) {
@@ -138,15 +147,13 @@ function update() {
 	player.input.right = cursors.right.isDown;
 	player.input.down = cursors.down.isDown;
 	player.input.jump = cursors.up.isDown;
-	player.input.stop = !player.input.left && 
-						!player.input.right && 
-						!player.input.jump && 
-						!player.input.down;
-	
+
 	for(var p in players) {
 		game.physics.arcade.collide(players[p].sprite, layer);
 		players[p].update(game);
 	}
+// game.physics.arcade.collide(jawn.sprite, layer);
+	// jawn.update(game);
 }
 
 function render() {
