@@ -114,7 +114,7 @@ function create() {
 	 map.setTileIndexCallback([1,11,12,13,14], function(player, tile) {
  		if(tile.dirty !== player.data.color) {
 			map.putTile(colorHash[player.data.color].num,tile.x,tile.y);
-			socket.emit("tile jawn", {x: tile.x, y: tile.y, color: player.data.color});
+			//socket.emit("tile jawn", {x: tile.x, y: tile.y, color: player.data.color});
 			tileScoreData.score++;
 			scoreText.text = "SCORE: " + tileScoreData.score;
 		}
@@ -133,7 +133,10 @@ function update() {
 	player.input.right = cursors.right.isDown;
 	player.input.down = cursors.down.isDown;
 	player.input.jump = cursors.up.isDown;
-	player.input.stop = !player.input.left && !player.input.right && !player.input.jump && !player.input.down;
+	player.input.stop = !player.input.left && 
+						!player.input.right && 
+						!player.input.jump && 
+						!player.input.down;
 	
 	for(var p in players) {
 		game.physics.arcade.collide(players[p].sprite, layer);

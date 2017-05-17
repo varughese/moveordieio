@@ -57,7 +57,6 @@ function Player(x, y, color, id) {
 Player.prototype.update = function(game) {
     var player = this.sprite;
     var self = this;
-    
     var inputChanged = (
         this.cursor.left != this.input.left ||
         this.cursor.right != this.input.right ||
@@ -72,7 +71,6 @@ Player.prototype.update = function(game) {
         }
     }
 
-    if(!this.cursor.stop) {
         player.body.acceleration.x = 0;
         if (this.cursor.left) {
                 player.body.acceleration.x = -1100;
@@ -112,7 +110,8 @@ Player.prototype.update = function(game) {
         }
 
         //  Allow the player to jump if they are touching the ground.
-        if (this.cursor.up) {
+        if (this.cursor.jump) {
+            console.log('jumpng');
             if(player.body.onFloor()) {
                 player.body.velocity.y = -500;
                 self.jumpHoldTimer = 0;
@@ -126,7 +125,6 @@ Player.prototype.update = function(game) {
         if (this.cursor.down) {
             player.body.velocity.y += 50;
         }
-    }
 
     function _controlUpdate(game, cursors) {
         player.body.acceleration.x = 0;
