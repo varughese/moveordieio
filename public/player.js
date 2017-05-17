@@ -111,7 +111,6 @@ Player.prototype.update = function(game) {
 
         //  Allow the player to jump if they are touching the ground.
         if (this.cursor.jump) {
-            console.log('jumpng');
             if(player.body.onFloor()) {
                 player.body.velocity.y = -500;
                 self.jumpHoldTimer = 0;

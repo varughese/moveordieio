@@ -8,6 +8,8 @@ var game = new Phaser.Game(27*62,15*62, Phaser.AUTO, '', {
 
 
 function preload() {
+	game.stage.disableVisibilityChange = true; // enable testing for multiplayer
+	
 	game.load.tilemap('map_basic', 'assets/maps/map_01.json', null, Phaser.Tilemap.TILED_JSON);
 	game.load.image('tiles', 'assets/sprites/tilelistspritesheet.png');
 	game.load.image('ground', 'assets/platform.png');
@@ -83,9 +85,12 @@ function create() {
 	});
 
 	socket.on("update_moves", function(data) {
-		console.log("CLIENT UPDAT MOVES");
 		var enemy = players[data.id];
 		enemy.cursor = data.state;
+		if(data.state.x !== enemy.sprite.x || data.state.y !== enemy.sprite.y) {
+			enemy.sprite.x = data.state.x;
+			enemy.sprite.y = data.state.y;
+		}
 		enemy.update();
 	});
 
