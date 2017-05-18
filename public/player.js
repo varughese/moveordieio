@@ -20,7 +20,7 @@ function Player(x, y, color, id) {
         right: false,
         down: false,
         jump: false,
-        stop: false
+        flags: {}
     };
 
     this.cursor = {
@@ -67,6 +67,7 @@ Player.prototype.update = function(game) {
         if(this.data.id === socket.id) {
             this.input.x = this.sprite.x;
             this.input.y = this.sprite.y;
+            this.input.flags.onFloor = player.body.onFloor();
             this.cursor = this.input;
             socket.emit('update_moves', this.input);
         }
