@@ -48,7 +48,9 @@ io.on('connection', function (socket) {
 
     socket.on("update_moves", function(state) {
         console.log("update the moves", state);
-        io.emit('update_moves', {id: socket.id, state: state});
+        players[socket.id].x = state.x;
+        players[socket.id].y = state.y;
+        socket.broadcast.emit('update_moves', {id: socket.id, state: state});
     });
 
     socket.on("tile jawn", function (tile) {

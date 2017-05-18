@@ -87,20 +87,26 @@ function create() {
 
 	socket.on("update_moves", function(data) {
 		var enemy = players[data.id];
-		enemy.cursor = data.state;
-		if(data.state.x !== enemy.sprite.x || data.state.y !== enemy.sprite.y) {
-			if(Math.abs(enemy.sprite.x - data.state.x) > 110 || Math.abs(enemy.sprite.y - data.state.y) > 70) {
-				console.warn('MISMATCH');
-				console.log('SERVER X:', data.state.x);
+		var state = data.state;
+		enemy.cursor = state;
+		// if(enemy.sprite.body.blocked.down)
+		// 	map.putTile(14, 0,12, 0);
+		// else
+		// 	map.putTile(13, 0,12,0);
+		if(state.x !== enemy.sprite.x || state.y !== enemy.sprite.y) {
+			if(Math.abs(enemy.sprite.x - state.x) > 210 || Math.abs(enemy.sprite.y - state.y) > 70) {
+				console.warn('MISMATCH', enemy.data.lastTimestamp - state.timestamp);
+				console.log('SERVER X:', state.x);
 				console.log('CLIENT X:', enemy.sprite.x);
-				console.log('SERVER Y:', data.state.y);
+				console.log('SERVER Y:', state.y);
 				console.log('CLIENT Y:', enemy.sprite.y);
-				enemy.sprite.x = data.state.x;
-				enemy.sprite.y = data.state.y;
+				enemy.sprite.y = state.y;
+				enemy.sprite.x = state.x;
 			}
 
 		}
-		// jawn.cursor = data.state;
+		enemy.data.lastTimestamp = state.timestamp;
+		// jawn.cursor = state;
 	});
 
 	// for(var i=0; i<players.length; i++) {

@@ -19,8 +19,7 @@ function Player(x, y, color, id) {
         left: false,
         right: false,
         down: false,
-        jump: false,
-        flags: {}
+        jump: false
     };
 
     this.cursor = {
@@ -37,6 +36,7 @@ function Player(x, y, color, id) {
         self.sprite = game.add.sprite(self.data.x, self.data.y, 'dude');
         player = self.sprite;
         player.data = self.data;
+        self.data.lastTimestamp = game.time.now;
         game.physics.enable(player);
         player.body.bounce.y = 0.08;
         player.tint = colorHash[self.data.color].tint;
@@ -67,8 +67,15 @@ Player.prototype.update = function(game) {
         if(this.data.id === socket.id) {
             this.input.x = this.sprite.x;
             this.input.y = this.sprite.y;
-            this.cursor = this.input;
-            socket.emit('update_moves', this.input);
+            this.cursor.left = this.input.left 
+            this.cursor.right = this.input.right 
+            this.cursor.jump = this.input.jump 
+            this.cursor.down = this.input.down
+            this.input.timestamp = game.time.now;
+            var transport = this.input;
+            setTimeout(function() {
+                socket.emit('update_moves', transport);
+            }, 500)
         }
     }
 
