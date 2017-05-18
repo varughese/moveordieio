@@ -95,9 +95,9 @@ Player.prototype.update = function(game) {
             this.cursor.down = this.input.down;
             this.input.timestamp = game.time.now;
             var transport = this.input;
-            setTimeout(function() {
+            // setTimeout(function() {
                 socket.emit('update_moves', transport);
-            }, 500)
+            // }, 500)
         }
     }
 
