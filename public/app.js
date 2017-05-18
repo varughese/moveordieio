@@ -89,13 +89,11 @@ function create() {
 		var enemy = players[data.id];
 		enemy.cursor = data.state;
 		if(data.state.x !== enemy.sprite.x || data.state.y !== enemy.sprite.y) {
-			if(data.state.flags.onFloor && 
-				(Math.abs(enemy.sprite.x - data.state.x) > 110 
-				|| Math.abs(enemy.sprite.y - data.state.y) > 70)) {
+			if(Math.abs(enemy.sprite.x - data.state.x) > 110 || Math.abs(enemy.sprite.y - data.state.y) > 70) {
 				console.warn('MISMATCH');
-				console.log('SERVER X:', data.state.x)
+				console.log('SERVER X:', data.state.x);
 				console.log('CLIENT X:', enemy.sprite.x);
-				console.log('SERVER Y:', data.state.y)
+				console.log('SERVER Y:', data.state.y);
 				console.log('CLIENT Y:', enemy.sprite.y);
 				enemy.sprite.x = data.state.x;
 				enemy.sprite.y = data.state.y;
