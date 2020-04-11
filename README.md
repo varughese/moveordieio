@@ -17,6 +17,6 @@ Visit [moveordie.herokuapp.com](moveordie.herokuapp.com) to view a version.
 
 ## Heres a gif:
 
-![alt text](https://media.giphy.com/media/3o7aD7JQ80zxwjk1DW/giphy.gif "Blurry version")
+![alt text](http://g.recordit.co/HUlzEVCI3c.gif "Blurry version")
 
 Better version [here](http://g.recordit.co/HUlzEVCI3c.gif)
