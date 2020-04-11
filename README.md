@@ -12,11 +12,9 @@ Open up `localhost:8080` in Chrome.
 
 The `public` folder has the files. Start with `app.js`.
 
+## Issues
+It is very laggy
 
-Visit [moveordie.herokuapp.com](moveordie.herokuapp.com) to view a version.
+![alt text](http://matvarughese.me/images/moveordie.png)
 
-## Heres a gif:
-
-![alt text](http://g.recordit.co/HUlzEVCI3c.gif "Blurry version")
-
-Better version [here](http://g.recordit.co/HUlzEVCI3c.gif)
+Gif version [here](http://g.recordit.co/HUlzEVCI3c.gif)
